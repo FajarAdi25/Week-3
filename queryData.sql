@@ -1,0 +1,41 @@
+CREATE TABLE users (
+  users_id SERIAL PRIMARY KEY,
+  username VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  phone_number VARCHAR(20),
+  password VARCHAR(255) NOT NULL,
+  image VARCHAR(255) NULL,
+  role INT
+);
+
+
+CREATE TABLE food_recipes (
+  recipes_id SERIAL PRIMARY KEY,
+  name_recipes VARCHAR(255) NOT NULL,
+  image VARCHAR (255),
+  ingredients TEXT NOT NULL,
+  video VARCHAR NULL,
+  name_video VARCHAR(255),
+  users_id INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE liked (
+  liked_id SERIAL PRIMARY KEY,
+  users_id SERIAL,
+  recipes_id SERIAL
+);
+
+CREATE TABLE saved (
+  saved_id SERIAL PRIMARY KEY,
+  users_id SERIAL,
+  recipes_id SERIAL
+);
+
+CREATE TABLE comment (
+  comment_id SERIAL PRIMARY KEY,
+  commen TEXT,
+  users_id SERIAL,
+  recipes_id SERIAL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
