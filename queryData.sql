@@ -18,23 +18,3 @@ CREATE TABLE food_recipes (
   users_id INT NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
-CREATE TABLE liked (
-  liked_id SERIAL PRIMARY KEY,
-  users_id SERIAL,
-  recipes_id SERIAL
-);
-
-CREATE TABLE saved (
-  saved_id SERIAL PRIMARY KEY,
-  users_id SERIAL,
-  recipes_id SERIAL
-);
-
-CREATE TABLE comment (
-  comment_id SERIAL PRIMARY KEY,
-  commen TEXT,
-  users_id SERIAL,
-  recipes_id SERIAL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);

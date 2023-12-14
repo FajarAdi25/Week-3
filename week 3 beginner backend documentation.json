@@ -1,0 +1,310 @@
+{
+	"info": {
+		"_postman_id": "b189da53-204a-4ece-9a44-b4fab968f5f4",
+		"name": "week-3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29237155"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "get user & query",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:2000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "budi",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "DESC",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "columnName",
+									"value": "username",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"ara@gmail.com\",\r\n    \"username\":\"ara\",\r\n    \"password\":\"abc123\",\r\n    \"confirmPassword\":\"abc123\",\r\n    \"phone_number\":\"0812345789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2000/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"budi@gmail.com\",\r\n    \"password\":\"abc123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit user",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"ibu ani\",\r\n    \"email\":\"ibuani@gmail.com\",\r\n    \"phone_number\":\"123\",\r\n    \"password\":\"\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2000/user/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"user",
+								"11"
+							],
+							"query": [
+								{
+									"key": "users_id",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:2000/user/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"user",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "recipe",
+			"item": [
+				{
+					"name": "get recipe & query",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:2000/recipes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"recipes"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "cimol",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "DESC",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "columnName",
+									"value": "recipes_id",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add recipe",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name_recipes\":\"cimol\",\r\n    \"ingredients\":\"cimol\",\r\n    \"image\":\"https://cdn0-production-images-kly.akamaized.net/oIN3wVed8tEnm39rmcJtHo7D0eA=/640x360/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/970871/original/021248500_1440846143-header_chiantilvpa_com.jpg\",\r\n    \"name_video\":\"Cara membuat cimol\",\r\n    \"video\":\"test\",\r\n    \"users_id\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2000/addrecipe",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"addrecipe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit recipe",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name_recipes\":\"rujak\",\r\n    \"image\":\"test\",\r\n    \"ingredients\":\"test\",\r\n    \"video\":\"test\",\r\n    \"name_video\":\"test\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2000/recipe/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"recipe",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete recipe",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:2000/recipe/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"recipe",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "formdata",
+			"value": "application/json"
+		}
+	]
+}

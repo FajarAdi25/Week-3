@@ -1,18 +1,18 @@
-require("dotenv").config();
-const pg = require("pg")
+require('dotenv').config()
+const pg = require('pg')
 
-const db = new pg.Pool({
-    host: process.env.HOST,
-    port: process.env.PORT,
-    database: process.env.DB,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
+const connectDb = new pg.Pool({
+  host: process.env.HOST,
+  port: process.env.PORT,
+  database: process.env.DB,
+  user: process.env.USER,
+  password: process.env.PASSWORD
 })
 
-db.connect((error) => {
-    if (error) {
-        console.log(error)
-    }
+connectDb.connect((error) => {
+  if (error) {
+    console.log(error)
+  }
 })
 
-module.exports = db;
+module.exports = connectDb
