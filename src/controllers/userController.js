@@ -1,50 +1,78 @@
 const { response, responseError } = require("../helpers/response");
-const { getUsers, findEmail, createUser, loginUser } = require("../models/userModel")
+const { getUsers, findEmail, createUser, loginUser, findId, updateUser, deleteUser } = require("../models/userModel")
 const userController = {
     getAllUsers: async (req, res) => {
         try {
             const users = await getUsers()
             response(res, users.rows, 200, "get data successful")
         } catch (error) {
-            responseError(res, 400, "User not found")
+            responseError(res, 404, "user not found")
         }
     },
 
     register: async (req, res) => {
         try {
-            const { email, username, password, confirmPassword, phone_number } = req.body
-            let {rowCount} = await findEmail(email)
+            const {body} = req
+            const {rowCount} = await findEmail(body.email)
             if (rowCount) {
-                return responseError(res, 400, "email already used")
-            } 
-
-            if (password !== confirmPassword) {
-                return responseError(res, 401, "password invalid")
+                throw new Error("email already used")
+            } else if (body.password !== body.confirmPassword) {
+                throw new Error("password invalid")
             }
-            const userData = {
-                username,
-                email, 
-                password, 
-                phone_number
-            }
-            const user = await createUser(userData)
-            return response(res, user, 201, "create successful")
+            await createUser(body)
+            response(res, body, 201, "create successful")
         } catch (error) {
-            return responseError(res, 500, error.message)
+            responseError(res, 400, error.message)
         }
     },
 
     login: async (req, res) => {
         try {
-            const {email, password} = req.body
-            const loginForm = {
-                email,
-                password
-            }
-            const user = await loginUser(loginForm)
-            return response(res, 200, user, "login successful")
+            const { body } = req
+            if (!body.email || !body.password) {
+                throw new Error("email and password are required")
+              }
+            await loginUser(body)
+            response(res, body, 200, "login successful")
         } catch (error) {
-            return responseError(res, 500, error.message)
+            responseError(res, 400, error.message)
+        }
+    },
+
+    editUser: async (req, res) => {
+        try {
+            const id = req.params.users_id;
+            const userId = await findId(id)
+            if (!userId.rowCount) {
+                throw new Error("user id not found")
+            }
+            const userData = userId.rows[0]
+            const {body} = req
+            let newUserData = {
+                username: body.username || userData.username,
+                email: body.email || userData.email,
+                phone_number: body.phone_number || userData.phone_number,
+                password: body.password || userData.password,
+                image: body.image || userData.image,
+              };
+              await updateUser(newUserData, id)
+              response(res, newUserData, 200, "update successful")
+        } catch (error) {
+            responseError(res, 400, error.message)
+        }
+    },
+
+    deleteUser: async (req, res) => {
+        try {
+            const id = req.params.users_id;
+            const userId = await findId(id)
+            if (!userId.rowCount) {
+                throw new Error("user id not found")
+            }
+            await deleteUser(id)
+            response(res, null, 200, "delete successful")
+        } catch (error) {
+            responseError(res, 400, error.message)
         }
     }
 
