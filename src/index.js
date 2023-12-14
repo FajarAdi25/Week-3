@@ -12,6 +12,7 @@ app.use(express.json())
 app.use(userRouter)
 app.use(recipeRouter)
 
+app.use(express.static('public'))
 app.get('/', (req, res) => {
   res.send('API has running')
 })
