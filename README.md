@@ -27,6 +27,7 @@ This is task week 3 for Beginner Backend PijarCamp
    |    |   └── recipeRouter.js        # Recipe-related routes
    |    |
    |    └── index.js                   # Server routing
+   |
    |── .eslintrc.json                  # A pluggable and configurable linter tool for identifying and reporting on patterns in JavaScript
    |── .gitattributes                  # Simple text file that gives attributes to pathnames
    |── .gitignore                      # List of files to be ignored by Git
