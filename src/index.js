@@ -1,9 +1,10 @@
 const express = require('express')
-const app = express()
 const cors = require('cors')
-const port = 2000
 const userRouter = require('./routes/userRoute')
 const recipeRouter = require('./routes/recipeRoute')
+
+const app = express()
+const port = 2000
 
 app.use(cors())
 app.use(express.json())
