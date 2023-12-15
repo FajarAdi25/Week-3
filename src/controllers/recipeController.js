@@ -13,7 +13,7 @@ const recipeController = {
         offset: query.offset || 0
       }
       const result = await getRecipeAndQuery(newQuery)
-      // console.log(result.rows)
+      // console.log(result)
       response(res, result.rows, 200, 'get data successful')
     } catch (error) {
       responseError(res, 400, error.message)

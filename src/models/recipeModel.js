@@ -58,10 +58,18 @@ const getRecipeAndQuery = async (query) => {
   return queryRecipe
 }
 
+const countPage = async () => {
+  const queryRecipe = await connectDb.query(
+    'SELECT COUNT(*) FROM food_recipes'
+  )
+  return queryRecipe
+}
+
 module.exports = {
   findIdRecipe,
   createRecipe,
   updateRecipe,
   deleteRecipe,
-  getRecipeAndQuery
+  getRecipeAndQuery,
+  countPage
 }
